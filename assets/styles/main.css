@@ -169,10 +169,13 @@ body.white .section-content.appContent .main-navigation{
 }
 
 .section-content.appContent .sectionNavCont{
+    background-color: var(--bone-white);
     display: flex;
     width: fit-content;
     min-height: 100vh;
 }
+
+/* .section-content.appContent .sectionNavCont .pageee, */
 .section-content.appContent .sectionNavCont .page{
     display: flex;
     flex-direction: column;
@@ -924,6 +927,8 @@ body.white .section-content.appContent .main-navigation{
     gap: var(--maximal-padding);
     padding: var(--average-padding);
 }
+
+
 .liveCard .activitySect .tags{
     display: flex;
     flex-wrap: wrap;
@@ -1065,31 +1070,9 @@ body.white .section-content.appContent .main-navigation{
     margin: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* explore page UI  */
 /* explore page UI  */
 /* explore page UI  */
-/* explore page UI  */
-
-
-
-
-
-
-
-
 
 
 .section-content.appContent .sectionNavCont .exploreCont.page{
@@ -1475,4 +1458,82 @@ body.white .section-content.appContent .main-navigation{
         --maximal-padding: 0.9rem;
     } */
     .section-content.appContent .main-navigation i{padding-block: var(--minimal-padding);}
+}
+
+
+/* ====================================================== */
+/* =============== DARK MODE DEFINITIONS ================= */
+/* ====================================================== */
+
+[data-theme="dark"] {
+    --tinga-brown: #b38867;
+    --sunset-orange: #ffb86b;
+    --bone-white: #1E1E1E;
+    --charcoal-black: #FAFAFA;
+    --cobalt-blue: #5b9bff;
+    --light-blue: #66d9ff;
+    --plant-green: #57c864;
+    --bright-red: #ff6b6b;
+    --accent-gold: #FFD700;
+
+    --tb-shader: #b3886733;
+    --so-shader: #ffb86b33;
+    --bw-shader: #1E1E1E33;
+    --cb-shader: #5b9bff33;
+    --pg-shader: #57c86433;
+    --br-shader: #ff6b6b33;
+    --ag-shader: #FFD70033;
+    --bc-shader: #FAFAFA33;
+
+    --tb-low-shader: #b3886711;
+    --so-low-shader: #ffb86b11;
+    --bw-low-shader: #1E1E1E11;
+    --cb-low-shader: #5b9bff11;
+    --pg-low-shader: #57c86411;
+    --br-low-shader: #ff6b6b11;
+    --ag-low-shader: #FFD70011;
+    --bc-low-shader: #FAFAFA11;
+
+    --background-color: #1E1E1E;
+    --surface-color: #2a2a2a;
+    --text-color: #FAFAFA;
+    --border-color: #3a3a3a;
+}
+
+/* ====================================================== */
+/* =============== DARK MODE ELEMENT STYLES ============== */
+/* ====================================================== */
+
+html, body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.section-content.appContent,
+.section-content.appContent .sectionNavCont .page,
+.section-content.appContent .sectionNavCont .page .header,
+.exploreCont .searchBar,
+.exploreCont .exploreInput,
+.page .advertise .ad,
+.default-btn,
+.input input,
+.searchInp input,
+.commentInput input,
+.selection .select,
+.largeSelections .option,
+.slider-btn,
+.userSelect .options,
+.all-popups .content-popup {
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+    color: var(--text-color);
+}
+
+img, video {
+    filter: brightness(0.9);
 }

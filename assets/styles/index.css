@@ -442,8 +442,7 @@ body:not([ios]) .iosInput{
 
 
 /* select styling */
-
-
+.postHead
 select{
     height: 3.2rem;
     background-color: transparent;
@@ -741,9 +740,16 @@ select{
     pointer-events: none;
 }
 .all-popups.active{
-    background-color: var(--bc-shader);
-    pointer-events: unset;
+        background-color: var(--bone-white);
+      pointer-events: unset;
 }
+
+/* For dark mode */
+[data-theme="dark"] .all-popups.active {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
 .all-popups .content-popup{
     display: flex;
     flex-direction: column;
@@ -1952,16 +1958,16 @@ select{
     top: 0;
     left: 0;
     background-color: var(--bone-white);
-    z-index: 30;
+    /* z-index: ; */
     transform: translateX(110%);
-    pointer-events: none;
+    /* pointer-events: none; */
     box-shadow: 5px 0 20px var(--bc-shader);
     transition: var(--snap-transition) 0.1s;
 }
 .floater-pages .page .header{
     position: sticky;
     top: 0;
-    z-index: 10;
+    /* z-index: 10; */
     background-color: var(--bone-white);
     display: flex;
     align-items: center;
@@ -4638,8 +4644,10 @@ body[ios] .page.chatroom .sendInput .flexBox{
     gap: var(--average-padding);
     max-height: 100vh;
     overflow-y: scroll;
+    z-index: 1000;
+    pointer-events: auto;
 }
-.page.profileBase::after{
+/* .page.profileBase::after{
     content: "";
     position: absolute;
     width: 100%;
@@ -4647,18 +4655,18 @@ body[ios] .page.chatroom .sendInput .flexBox{
     top: 0;
     left: 0;
     background-color: var(--bone-white);
-    z-index: 1;
+    z-index: -10;
     background-image: url(../images/loader_dark.gif);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 2rem;
     opacity: 0;
-    pointer-events: none;
+    /* pointer-events: none; */
     transition: var(--snap-transition);
-}
+} */
 .page.profileBase.load::after{
-    opacity: 1;
-    pointer-events: unset;
+    opacity: -1;
+    /* pointer-events: unset; */
     transition: none;
 }
 .page.profileBase h1,
@@ -5110,8 +5118,6 @@ body[ios] .page.chatroom .sendInput .flexBox{
 
 
 /* terms & conditions floater  */
-
-
 .page.termsConditions{
     display: flex;
     flex-direction: column;
@@ -5174,44 +5180,6 @@ body[ios] .floater-pages .page:not(.active){
     transition: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* for smaller devices  */
 
 
@@ -5225,4 +5193,102 @@ body[ios] .floater-pages .page:not(.active){
     .default-btn{height: 2.5rem;}
     .startup-scroll{gap: var(--minimal-padding);}
     .startup-scroll img,.startup-scroll .dummy{border-radius: var(--maximal-padding);}
+}
+
+
+/* ====================================================== */
+/* =============== DARK MODE DEFINITIONS ================= */
+/* ====================================================== */
+
+[data-theme="dark"] {
+    --tinga-brown: #b38867;
+    --sunset-orange: #ffb86b;
+    --bone-white: #1E1E1E;
+    --charcoal-black: #FAFAFA;
+    --cobalt-blue: #5b9bff;
+    --plant-green: #57c864;
+    --bright-red: #ff6b6b;
+    --accent-gold: #FFD700;
+
+    --tb-shader: #b3886733;
+    --so-shader: #ffb86b33;
+    --bw-shader: #1E1E1E33;
+    --cb-shader: #5b9bff33;
+    --pg-shader: #57c86433;
+    --br-shader: #ff6b6b33;
+    --ag-shader: #FFD70033;
+    --bc-shader: #FAFAFA33;
+
+    --tb-low-shader: #b3886711;
+    --so-low-shader: #ffb86b11;
+    --bw-low-shader: #1E1E1E11;
+    --cb-low-shader: #5b9bff11;
+    --pg-low-shader: #57c86411;
+    --br-low-shader: #ff6b6b11;
+    --ag-low-shader: #FFD70011;
+    --bc-low-shader: #FAFAFA11;
+
+    /* Background and text colors */
+    --background-color: #1E1E1E;
+    --surface-color: #2a2a2a;
+    --text-color: #FAFAFA;
+    --border-color: #3a3a3a;
+}
+
+/* ====================================================== */
+/* =============== DARK MODE ELEMENT STYLES ============== */
+/* ====================================================== */
+
+html, body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section .section-content {
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.default-btn {
+    background-color: var(--charcoal-black);
+    color: var(--bone-white);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.input input,
+.searchInp input,
+.commentInput input {
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+.selection .select,
+.largeSelections .option {
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.slider-btn {
+    background-color: var(--surface-color);
+    color: var(--text-color);
+}
+
+.toggle-btn {
+    background-color: var(--bc-shader);
+}
+
+.toggle-btn.active {
+    background-color: var(--pg-shader);
+}
+
+.userSelect .options {
+    background-color: var(--surface-color);
+}
+
+.all-popups .content-popup {
+    background-color: var(--surface-color);
+    color: var(--text-color);
 }

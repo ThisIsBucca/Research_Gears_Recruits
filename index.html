@@ -1,22 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="theme-color" content="#faf8f5" id="themeColorMeta">
+  <meta name="theme-color" content="#000000" id="themeColorMeta">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  <!-- Preload critical fonts
+  <link rel="preload" href="assets/fonts/Montserrat.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/uicons-regular-rounded.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/uicons-solid-rounded.woff2" as="font" type="font/woff2" crossorigin>
+  
+  --Preload critical images
+  <link rel="preload" href="assets/favicon/android-chrome-512x512.png" as="image">
+  <link rel="preload" href="assets/images/loader.gif" as="image"> >
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/styles/index.css"/>
   <link rel="stylesheet" href="assets/styles/main.css">
   <link rel="stylesheet" href="assets/styles/additional.css">
-  <!-- <link rel="stylesheet" href="assets/styles/index-dark.css"/>
-  <link rel="stylesheet" href="assets/styles/main-dark.css"> -->
   <link rel='stylesheet' href='assets/styles/solid-rounded.css'/>
   <link rel="stylesheet" href="assets/styles/regular-rounded.css"/>
+  
   <link rel="shortcut icon" href="assets/favicon/android-chrome-512x512.png" type="image/png">
   <link rel="manifest" href="manifest.json"/>
   <title>Sokoni App</title>
 </head>
 <script>
 let quickBuyItem = undefined;
+
+// Fix for window.click not being a function
+if (!window.click) {
+    window.click = function() {
+        // No-op fallback for window.click
+        console.log("Window click triggered");
+    };
+}
 
 async function registerSW() {
   if (!("serviceWorker" in navigator)) throw new Error("Service workers not supported");
@@ -54,7 +72,7 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
 <body>
 <section>
   <div class="loader"><img src='assets/favicon/android-chrome-512x512.png' alt=""></div>
-
+ <!-- /<h1>HELLO BOYS</h1> -->
   <div class="section-content startup">
     <div class="startup-scroll">
       <div class="dummy"></div>
@@ -73,7 +91,7 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
     </div>
     <h1 class="startup-title" sw="Tafuta na nunua kwa machalii wa Afrika" en="Find, Inspect & Buy from African Sellers">Find, Inspect & Buy from African Sellers</h1>
     <p class="startup-dsc" sw="Pata bidhaa halal moja kwa moja kutoka kwa wauzaji wa ukweli Afrika. Hakuna longolongo!" en="Discover real products straight from African sellers. no stress, just pure hustle vibes.">
-        Discover real products straight from African sellers. no stress, just pure hustle vibes.
+        Discover real products straight from African seller. no stress, just pure hustle vibes.
     </p>
     <div class="slider-btn" fn="openPop1">get started</div>
   </div>
@@ -213,7 +231,7 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
     </div>
   </div>
 
-  <div class="section-content appContent">
+  <div class="section-content appContent ">
     <div class="sectionNavCont nativeNavigation">
       <div class="pageee feedCont">
         <div class="header">
@@ -500,7 +518,7 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
           <p class="default-btn">Organic Gas</p>
         </div>
         <div class="explorePosts">
-          <div class="postGrid">
+          <div class="postGrid"  >
             <div class="postCont">
               <div class="postHead">
                 <div class="leftData">
@@ -521,8 +539,76 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
               </div>
             </div>
           </div>
+
+           <div class="postGrid">
+            <div class="postCont">
+              <div class="postHead">
+                <div class="leftData">
+                  <img src="assets/images/faces/user1.jfif" alt="" class="profilePic acti">
+                  <div class="userData">
+                    <h4>fanevesal <img src="assets/images/badges/gold.png"></h4>
+                    <div class="group">
+                      <p><i class="fi fi-sr-marker"></i> Dodoma, Tanzania</p>
+                      <p><i class="fi fi-sr-calendar"></i> 12nd April, 2025</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="postActions">
+                <i class="fi fi-sr-star rating">3.4</i>
+                <i class="fi fi-sr-heart"></i>
+                <i class="fi fi-rr-bookmark"></i>
+              </div>
+            </div>
+          </div>
+
+           <div class="postGrid">
+            <div class="postCont">
+              <div class="postHead">
+                <div class="leftData">
+                  <img src="assets/images/faces/user1.jfif" alt="" class="profilePic acti">
+                  <div class="userData">
+                    <h4>fanevesal <img src="assets/images/badges/gold.png"></h4>
+                    <div class="group">
+                      <p><i class="fi fi-sr-marker"></i> Dodoma, Tanzania</p>
+                      <p><i class="fi fi-sr-calendar"></i> 12nd April, 2025</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="postActions">
+                <i class="fi fi-sr-star rating">3.4</i>
+                <i class="fi fi-sr-heart"></i>
+                <i class="fi fi-rr-bookmark"></i>
+              </div>
+            </div>
+          </div>
+
+           <div class="postGrid">
+            <div class="postCont">
+              <div class="postHead">
+                <div class="leftData">
+                  <img src="assets/images/faces/user1.jfif" alt="" class="profilePic acti">
+                  <div class="userData">
+                    <h4>fanevesal <img src="assets/images/badge"></h4>
+                    <div class="group">
+                      <p><i class="fi fi-sr-marker"></i> Dodoma, Tanzania</p>
+                      <p><i class="fi fi-sr-calendar"></i> 12nd April, 2025</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="postActions">
+                <i class="fi fi-sr-star rating">3.4</i>
+                <i class="fi fi-sr-heart"></i>
+                <i class="fi fi-rr-bookmark"></i>
+              </div>
+            </div>
+          </div>
+
           <div class="postGrid">
           </div>
+
         </div>
       </div>
 
@@ -613,6 +699,7 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
         <div class="starBox">
           <script>
             def(()=>{
+              console.log("starbox")
               let starBox = get('.starBox');
               starBox.classList.toggle('visible');
               let observer = new IntersectionObserver((entries)=>{
@@ -832,7 +919,7 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
       </div>
 
       <div class="page profileBase accountSettings">
-        <h1>Profile Settings</h1>
+        <h1>Profile Settings
         <div class="searchInp">
           <i class="fi fi-rr-search"></i>
           <input type="text" placeholder="Search Settings....">
@@ -938,8 +1025,9 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
             <h4 txt="new">Dark Mode</h4>
             <p>Reduce eye strain and improve readability in <span>low-light</span> environments by switching to Dark Mode.</p>
           </div>
-          <div class="toggle-btn"><i class="fi fi-sr-moon switch"></i></div>
+          <div class="toggle-btn"><i id="main-theme-toggle" class="fi fi-sr-moon switch"></i></div>
         </div>
+
         <div class="toggleCont last">
           <i class="fi fi-rr-globe type"></i>
           <div class="data">
@@ -1318,6 +1406,8 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
           </div>
         </div>
       </div>
+
+      
       <!-- <div class="default-btn" onclick="this.classList.add('load')">follow</div> -->
     </div>
     <div class="startup-scroll">
@@ -1761,8 +1851,8 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
 
   <div class="page searchResults">
     <div class="header">
-      <!-- <i class="fi fi-rr-searc holder"></i> -->
-      <!-- <img src="assets/images/logo.png" alt=""> -->
+       <!-- <i class="fi fi-rr-searc holder"></i> 
+       <img src="assets/images/logo.png" alt="">  -->
       <h2 class="filtered">112k Results</h2>
       <div class="call2act">
         <i class="fi fi-rr-settings-sliders" ontouchend="getPop('.filterSort')"></i>
@@ -2103,7 +2193,7 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
     </div>
   </div>
 
-  <div class="page profileBase profileSettings">
+  <div class="page profileBase profileSettings"  >
     <h1>Profile Settings</h1>
     <h3>Profile Information</h3>
     <div class="profileSlt">
@@ -2358,14 +2448,14 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
       </div>
       <i class="fi fi-rr-angle-small-right show"></i>
     </div>
-    <div class="toggleCont">
+    <!-- <div class="toggleCont">
       <i class="fi fi-rr-credit-card type"></i>
       <div class="data">
         <h4 txt="new">Payment Methods</h4>
         <p>Manage your saved payment methods, add new <span>credit/debit</span> cards, and set your preferred payment option for a seamless checkout experience.</p>
       </div>
       <i class="fi fi-rr-angle-small-right show"></i>
-    </div>
+    </div> -->
     <div class="toggleCont last">
       <i class="fi fi-rr-map-marker type"></i>
       <div class="data">
@@ -2398,18 +2488,19 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
         <h4 txt="new">Direct Email Notification</h4>
         <p>Get notified via email for <span>important</span> account activities like password changes, login alerts, and security updates.</p>
       </div>
-      <div class="toggle-btn"><i class="fi fi-sr-moon switch"></i></div>
+      <div  class="toggle-btn"><i  class="fi fi-sr-moon switch"></i></div>
     </div>
 
-    <h3>Appearance & Preferences</h3>
-    <div class="toggleCont">
-      <i class="fi fi-rr-moon-stars type"></i>
+    <!-- <h3>Appearance & Preferences</h3>
+    <div class="toggleCont" >
+      <i  class="fi fi-rr-moon-stars type" ></i>
       <div class="data">
-        <h4 txt="new">Dark Mode</h4>
+        <h4 txt="new" >Dark Mode</h4>
         <p>Reduce eye strain and improve readability in <span>low-light</span> environments by switching to Dark Mode.</p>
       </div>
-      <div class="toggle-btn"><i class="fi fi-sr-moon switch"></i></div>
-    </div>
+      <div   class="toggle-btn  "><i class="fi fi-sr-moon switch theme-button"></i></div>
+    </div> -->
+
     <div class="toggleCont last">
       <i class="fi fi-rr-globe type"></i>
       <div class="data">
@@ -2877,7 +2968,9 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
     </div>
     <div class="call2action">
       <i class="fi fi-rr-angle-small-left back"  ontouchend="shutPop('.welcome')"></i>
-      <div class="default-btn" onclick="shutPop('.welcome')">Finish Setup</div>
+      <!-- we remoe function from shutpop -->
+      <!-- <div class="default-btn let-shut-pop" onclick="shutPop('.welcome')">Finish Setup</div> -->
+      <div class="default-btn let-shut-pop"">Finish Setup</div>
     </div>
   </div>
   <div class="content-popup logOutConfirm">
@@ -3134,20 +3227,20 @@ function get(el, all=false){return all ? document.querySelectorAll(el) : documen
 <p class="statusMessage"><i class="fi fi-rr-exclamation"></i><span>Product was added to cart successfully🎉</span></p>
 </body>
 <!-- <script src="https://cdn.jsdelivr.net/npm/@capacitor/core/dist/capacitor.js"></script> -->
-<script src="https://accounts.google.com/gsi/client" async defer></script>
+<!-- <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image-more/3.6.0/dom-to-image-more.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js"></script> -->
 <script src="assets/js/confetti.js"></script>
 <script src="assets/js/confetti_test.js"></script>
-<script src="assets/js/mapbox.js"></script>
+<!-- <script src="assets/js/mapbox.js"></script> -->
 <script src="assets/js/pbkdf2.encrypt.min.js"></script>
 <script src="assets/js/mockData.js"></script>
-<script src="assets/js/index.js"></script>
 <script src="assets/js/push_handler.js"></script>
 <script src="assets/js/navigation.js"></script>
 <script src="assets/js/languages.js"></script>
-<script src="assets/js/api_handler.js"></script>
-<script src="assets/js/components.js"></script>
+<script type = 'module' src="assets/js/index.js"></script>
+<script type = 'module' src="assets/js/api_handler.js"></script>
+<script type = 'module' src="assets/js/components.js"></script>
 <!-- <script src="assets/js/nativeHandler.js"></script> -->
 </html>

@@ -1,28 +1,23 @@
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const JSON_HEAD = {"Content-Type": "applicarion/json"}
-const RWS_SERVER = "";
-const CWS_SERVER = "";
-// const MAIN_SERVER = "http://127.0.0.1:8000";
-const MAIN_SERVER = "https://api.sokoni.africa";
+export const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+// Fixed: correct Content-Type spelling and provide a shared JSON header constant
+export const JSON_HEAD = { "Content-Type": "application/json" };
+// const RWS_SERVER = "";
+// const CWS_SERVER = "";
+
+export const jon = 'unju bin unuki'
+
+// Choose API server based on host — in development use the local proxy to avoid CORS.
+export const MAIN_SERVER = (location.hostname === '127.0.0.1' || location.hostname === 'localhost')
+  ? 'http://localhost:3001' // proxy server created in project root (proxy.js)
+  : 'https://api.sokoni.africa';
+
+  // const MAIN_SERVER = (location.hostname === '127.0.0.1' || location.hostname === 'localhost')
+  // ? 'https://api.sokoni.africa' // proxy server created in project root (proxy.js)
+  // : 'https://api.sokoni.africa';
+
 // const socket = new WebSocket(`${MAIN_SERVER.replace("http", "ws")}/online_status`);
 const CLIENT_ID = "284417775218-6h4drr8fq53unbqu66np7v2j70untccp.apps.googleusercontent.com";
 let OTP = ""
-
-
-// const tokenClient = google.accounts.oauth2.initTokenClient({
-//   client_id: CLIENT_ID,
-//   scope: "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/user.birthday.read",
-//   callback: (response) => {
-//     const accessToken = response.access_token;
-//     fetch("https://people.googleapis.com/v1/people/me?personFields=genders,birthdays,names", {
-//       headers: { "Authorization": `Bearer ${accessToken}` }
-//     })
-//     .then(res => res.json())
-//     .then(data => console.log("User profile:", data))
-//     .catch(err => console.error(err));
-//   }
-// });
-
 
 let onboardData = {
   language: null,
@@ -31,6 +26,12 @@ let onboardData = {
   categories: null,
   location: null
 }
+onboardData.language = "swahili";
+onboardData.gender = 'male';
+onboardData.role = 'buyer';
+onboardData.categories = "unknown"
+onboardData.location = 'Tanzania,kigamboni'
+
 
 // constants up top
 
@@ -39,11 +40,12 @@ function resetCreateInputs(){
   for(let inp of inputs){
     inp.value = '';
   }
-  let toggles = get('.floater-pages .productCreate .actInputs .toggleCont', true);
+  let toggles = get('.flo ater-pages .productCreate .actInputs .toggleCont', true);
   for(let tg of toggles){
     tg.setAttribute('value','off');
   }
   let colors = get('.floater-pages .productCreate .imgCollection .image', true);
+
   for(let c of colors){
     c.remove();
   }
@@ -58,15 +60,18 @@ function resetCreateInputs(){
 function retrieveSettingsData(){
   let toggles = get('.floater-pages .productCreate .actInputs .toggleCont', true);
   let settings = {};
+
   toggles.forEach(toggle=>{
     let key = toggle.getAttribute('value');
     let value = toggle.children[2].classList.contains('active') ? true : false;
     settings[key] = value;
   });
-  // console.log(settings);
+  
+   console.log(settings);
   return settings;
 };
-async function retrieveProductData() {
+
+export async function retrieveProductData() {
   let imgs = get('.floater-pages .productCreate .imgCollection .image img', true);
   let title = get('.floater-pages .productCreate .actInputs input[type="text"]').value.trim();
   let inventory = get('.floater-pages .productCreate .actInputs .inps input.commaInput').value.trim().replace(/,/g, '');
@@ -241,7 +246,10 @@ function shuffleArray(array) {
   }
   return array;
 };
+
 function get(el, all=false){return all ? document.querySelectorAll(el) : document.querySelector(el)};
+
+
 function getFloater(className){
   if(className == '.storyView') switchTheme('#cdcbc9');
   if(className == '.storyCreate') switchTheme('#111111ff');
@@ -255,7 +263,7 @@ function getFloater(className){
   floater.classList.add('active');
   // console.log(className)
 };
-function getPop(className){
+export function getPop(className){
   switchTheme("#cdcbc9")
   setTimeout(()=>{
     const popCont = document.querySelector('.all-popups');
@@ -263,7 +271,7 @@ function getPop(className){
     popCont.querySelector(className).classList.add('active');
   }, 200)
 };
-function shutPop(className){
+export function shutPop(className){
   switchTheme("#faf8f5")
   const popCont = document.querySelector('.all-popups');
   popCont.querySelector(className).classList.remove('active');
@@ -378,9 +386,9 @@ function formatDate(input) {
 
   return `${day}${suffix} ${month}, ${year}`;
 };
-function shuffleArray(arr) {
-  return arr.sort(() => Math.random() - 0.5);
-};
+// function shuffleArray(arr) {
+//   return arr.sort(() => Math.random() - 0.5);
+// };
 function embedLinks(description) {
   return description.replace(/https?:\/\/(?:www\.)?([\w-]+)\.\w+(?:\/[^\s]*)?/gi, (match, domain) => {
     const siteName = domain.toLowerCase();
@@ -438,6 +446,8 @@ function initTitleDesc(index){
         descrEl.textContent = target.descr;
     };
 };
+
+
 function initOnboardingSteps(){
   const onboarding = get('.section-content.onboarding');
   const stepsList = onboarding.querySelectorAll('.stepsList i');
@@ -546,7 +556,7 @@ function startOnboarding(response){
       shutPop('.signIn');
 
       console.log(response);
-      if(response.status == "failed") return;
+      if(1 !== 1) return;
       localStorage.setItem("sokoni_identity", response.___access_token);
       localStorage.setItem("___refresh_token", response.___refresh_token);
       // socket.send(localStorage.getItem("sokoni_identity"));
@@ -554,8 +564,9 @@ function startOnboarding(response){
       startupPage.classList.add('disabled');
       subscribeUser();
       showLocations();
+      console.log("we heeeere")
 
-      if(!response.new) { // existing user
+      if(response.new) { // existing user
         localStorage.setItem("sokoni_role", response.role);
         
         appContent.classList.add("active");
@@ -579,11 +590,15 @@ function startOnboarding(response){
     });
   });
 };
+
+
 function onboardingTrigger(){
+  
   const onbBtn = document.querySelectorAll('.all-popups .signIn .default-btn.googleLogin');
   console.log(onbBtn);
   onbBtn.forEach(btn=>{
     btn.addEventListener('click', ()=>{
+    
       startOnboarding();
     });
   })
@@ -699,6 +714,8 @@ function getIn(user_data){
     } catch (error) {};
   });
 };
+
+
 function handleLoader(){
   const loader = document.querySelector('.loader');
   
@@ -706,39 +723,62 @@ function handleLoader(){
     document.body.setAttribute("ios", "");
   };
   // downloadPWA();
-  window.addEventListener('load', ()=>{
-    refreshToken();
-    google.accounts.id.initialize({
-      client_id: CLIENT_ID,
-      callback: startOnboarding,
-      ux_mode: "popup"
-    });
+  window.addEventListener('load', async ()=>{
+    // Attempt to refresh token on load if the function is available.
+    // This avoids a ReferenceError when the auth module hasn't loaded yet.
+    // try {
+    //   if (typeof refreshToken === 'function') {
+    //     const refreshed = await refreshToken();
+    //     if (refreshed) console.log('Token refreshed on load');
+    //     else console.log('No refresh token available or refresh failed');
+    //   } else {
+    //     console.warn('refreshToken is not defined at load time; skipping token refresh');
+    //   }
+    // } catch (err) {
+    //   console.warn('refreshToken threw an unexpected error on load', err);
+    // }
+
+    // google.accounts.id.initialize({
+    //   client_id: CLIENT_ID,
+    //   callback: startOnboarding,
+    //   ux_mode: "popup"
+    // });
+
+  //check for session
     if(localStorage.getItem("sokoni_identity")){
       console.log("getting in")
       const startupPage = get('.section-content.startup');
       const appContent = get('.section-content.appContent');
       startupPage.classList.add('disabled');
       appContent.classList.add('active');
-      // loadExplorePosts();
-      // initAllEndpoints();
+      loadExplorePosts();
+      initAllEndpoints();
     };
+
     get('.exploreReload').ontouchstart = ()=>{
       if(!get('.exploreReload').classList.contains("active")) return;
       loadExplorePosts();
     };
-    if(!isStandalone()) {window.click();return};
+
+    if(isStandalone()) {window.click();return};
+
+                          
     setTimeout(()=>{
       loader.classList.add('disabled');
     }, 2000);
   })
 };
+
+
 function watchStartupScroll(){
     const startupScroll = document.querySelector('.startup-scroll');
     const swipeAnimation = document.querySelector('.swipeInstruct');
     window.addEventListener("load", ()=>{
       setTimeout(()=>{
+        
         // if(startupScroll.hasAttribute('scrolled')) return;
           swipeAnimation.classList.toggle('active');
+
           setTimeout(()=>{
               swipeAnimation.classList.toggle('active');
           }, 5000);
@@ -841,10 +881,17 @@ async function switchTheme(color='#faf8f5') {
     // let { StatusBar, StatusBarStyle } = Capacitor.Plugins;
 
     document.getElementById('themeColorMeta').content = color;
-    // if(color=="#faf8f5"){document.body.classList.add("white")}
-    // else{document.body.classList.remove("white")};
-    // await StatusBar.setStyle({ style: StatusBarStyle.Light });
+    if(color=="#ffffff"){document.body.classList.add("white")}
+    else{
+      document.body.classList.remove("white")
+      console.log(color)
+    };
+
+   // await StatusBar.setStyle({ style: StatusBarStyle.Light });
 };
+
+
+
 async function logOut(){
   localStorage.removeItem("sokoni_identity");
   localStorage.removeItem("sokoni_role");
@@ -905,16 +952,58 @@ function enableCategories(){
   });
 };
 
+// UI-level error handling for missing images/fonts/scripts
+function addResourceErrorHandlers() {
+  // Images: fallback to default
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function() {
+      if (!this.src.includes('default.png')) {
+        this.src = 'assets/images/default.png';
+      }
+    });
+  });
+  // Fonts: log error (browsers don't expose font load errors directly)
+  document.fonts && document.fonts.ready.then(() => {
+    document.fonts.forEach(fontFace => {
+      if (fontFace.status === 'error') {
+        console.warn('Font failed to load:', fontFace.family);
+      }
+    });
+  });
+  // Scripts: global error handler
+  window.addEventListener('error', function(e) {
+    if (e.target.tagName === 'SCRIPT') {
+      alert('A script failed to load. Please check your connection or reload the page.');
+    }
+  }, true);
+}
 
 
+//let make that welcome pop shut
+ function shutItPop(){
+ const shutThePop = document.querySelector('.let-shut-pop')
+ shutThePop.addEventListener("click", () => { shutPop('.welcome') } )
+ }
+
+ //darkmode code 
+
+  const darkModeToggle = document.getElementById('main-theme-toggle')
+
+    darkModeToggle.addEventListener('click', () => {
+       console.log('if u know uknow')
+      const root = document.documentElement;
+      const currentTheme = root.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', newTheme);
+
+    })
+     
+
+//document.documentElement.setAttribute('data-theme', 'dark'); 
 
 
-// FUNCTION CALLOUTS 
-// FUNCTION CALLOUTS 
-// FUNCTION CALLOUTS 
-// FUNCTION CALLOUTS 
-
-
+                     
+shutItPop()
 handleLoader();
 initEnterKeyHint();
 enableCategories();
@@ -923,7 +1012,13 @@ disableTouchAction();
 watchStartupScroll();
 onboardingTrigger();
 switchTheme();
+addResourceErrorHandlers();
 applyLocation().then(coords => {
   onboardData.location = coords;
-  showLocations();
+  // showLocations is defined in api_handler.js  guard in case scripts load order
+  if (typeof showLocations === 'function') {
+    showLocations();
+  } else {
+    console.warn('showLocations is not defined yet; will run when endpoints initialize');
+  }
 });

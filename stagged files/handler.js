@@ -1,11 +1,5 @@
 // const JSON_HEAD = {"Content-Type": "applicarion/json"}
 
- import {shutPop} from './index.js'
- import { MAIN_SERVER } from './index.js'
- import { JSON_HEAD } from './index.js'
- import { safeFetch } from './api_handler_new.js'
- import { handleOnlineStatus } from './api_handler_new.js'
-
 async function refreshToken() {
   try {
     const refresh_token = localStorage.getItem("___refresh_token");
@@ -195,7 +189,6 @@ async function loadPosts() {
         </div>
         <h1 class="postAd" style="display:none;">Sponsored</h1>
       `;
-      
 
       // Click to view product
       let postClick = postCont.querySelector(".postClick");
@@ -654,8 +647,6 @@ async function displayConversations(){
   });
   renderChats(data || []);
 };
-
-
 async function getConversation(target_id, user_data) {
   get(".messageProfilePic").src = user_data[0]
   get(".messageFullName").textContent = user_data[1]
@@ -982,18 +973,18 @@ async function loadMyProfile() {
 // -----------------------------
 
 async function loadExplorePosts() {
-  const grids = document.querySelectorAll('.postCont .explorePosts .postGrid');
-  grids.forEach(g => g.innerHTML = '<img src="assets/images/loader.gif" class="loaderGif">');  
+  const grids = document.querySelectorAll('.exploreCont .explorePosts .postGrid');
+  grids.forEach(g => g.innerHTML = '<img src="assets/images/loader.gif" class="loaderGif">');
 
   try {
-    const res = await safeFetch(`${MAIN_SERVER}/get_products`, {
+    const res = await fetch(`${MAIN_SERVER}/get_products`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({})
     });
     let posts = await res.json();
     // console.log("Loaded Posts:", posts);
-  //  shuffleArray(posts);
+    shuffleArray(posts);
 
     grids.forEach(g => g.innerHTML = '');
 
@@ -1245,21 +1236,20 @@ function renderPost(post, grid) {
 // -----------------------------
 
 
+function handleOnlineStatus(){
+  const socket = new WebSocket(`${MAIN_SERVER.replace("http", "ws")}/online_status`);
 
-// function handleOnlineStatus(){
-//   const socket = new WebSocket(`${MAIN_SERVER.replace("http", "ws")}/online_status`);
-
-//   socket.onopen = () => {
-//     console.log("Connected to Server: User Online");
-//     socket.send(localStorage.getItem("sokoni_identity"));
-//   };
-//   socket.onclose = () => {
-//     console.log("Server Disconnected");
-//   };
-//   socket.onerror = (err) => {
-//     console.error("Socket error:", err);
-//   };
-// };
+  socket.onopen = () => {
+    console.log("Connected to Server: User Online");
+    socket.send(localStorage.getItem("sokoni_identity"));
+  };
+  socket.onclose = () => {
+    console.log("Server Disconnected");
+  };
+  socket.onerror = (err) => {
+    console.error("Socket error:", err);
+  };
+};
 function applyCartData() {
  try {
     setTimeout(() => { get(".buyRightNow").classList.remove("load") }, 1000);
@@ -1699,12 +1689,11 @@ function getUserId() {
 };
 
 async function fetchStories() {
-  const rsp =await safeFetch(`${MAIN_SERVER}/get_story`, {
-    method: "POST",
+  const rsp = await fetch(`${MAIN_SERVER}/get_story`, {
+    method: "POST", credentials: "include",
     headers: JSON_HEAD,
     body: JSON.stringify({ id: localStorage.getItem("sokoni_identity") })
   });
-  console.log(res.json())
   return rsp.json();
 };
 
@@ -1837,7 +1826,6 @@ function applyRole(){
 
 
 function initAllEndpoints(){
-    
   window.addEventListener("load", ()=>{
     initGetStories();
     initAddStory();

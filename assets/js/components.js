@@ -1,10 +1,16 @@
+
+import {getPop} from './index.js'
+import {shutPop} from './index.js'
+import {SpeechRecognition} from './index.js'
+
+import {retrieveProductData} from './index.js'
+
 const btnFunctions = {
     'openPop1': [getPop, '.signIn'],
-    'openCheck': [getCheckoutData, ''],
+    'openCheck': [()=>{}, ''],
     'createData': [retrieveProductData, '']
 }
 let CamUsed = false;
-
 
 function initKYC() {
   const btn = document.querySelector(".KYCSubmission .default-btn");

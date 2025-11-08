@@ -1,0 +1,39 @@
+{
+  "name": "research_gears_recruits",
+  "version": "1.0.0",
+  "description": "**🔗 Live Demo:** [https://recruits.sokoni.africa/](https://recruits.sokoni.africa/)",
+  "main": "sw.js",
+  "scripts": {
+    "test": "echo \"No tests specified yet\" && exit 0",
+    "start": "http-server . -p 3000 -c-1",
+    "dev": "nodemon --watch . --ext html,css,js --exec \"npm start\"",
+    "lint": "eslint js/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fanevesal/Research_Gears_Recruits.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fanevesal/Research_Gears_Recruits/issues"
+  },
+  "homepage": "https://github.com/Fanevesal/Research_Gears_Recruits#readme",
+  "devDependencies": {
+    "dotenv": "^17.2.3",
+    "eslint": "^9.38.0",
+    "http-server": "^14.1.1",
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "axios": "^1.12.2",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "google-auth-library": "^10.4.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.19.2",
+    "node-fetch": "^3.3.2"
+  }
+}
