@@ -760,7 +760,7 @@ function handleLoader(){
       loadExplorePosts();
     };
 
-    if(isStandalone()) {window.click();return};
+    // if(isStandalone()) {window.click();return};
 
                           
     setTimeout(()=>{
