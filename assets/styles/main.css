@@ -116,8 +116,9 @@ a{
 
 
  .section-content.appContent .main-navigation{
-    /* bottom: 4rem; */
-     bottom: env(safe-area-inset-bottom,4rem);
+    padding-bottom: 1.8rem;
+    /* bottom: 5px; */
+     /* bottom: env(safe-area-inset-bottom,4rem); */
 }
 
 
