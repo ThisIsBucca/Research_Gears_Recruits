@@ -114,11 +114,10 @@ a{
 }
 
  .section-content.appContent .main-navigation{
-    padding-bottom: 1.8rem;
+    padding-bottom: 2.4rem;
     /* bottom: 5px; */
      /* bottom: env(safe-area-inset-bottom,4rem); */
 }
-
 .section-content.appContent .main-navigation i{
     padding-block: var(--maximal-padding);
     display: inline-flex !important;
