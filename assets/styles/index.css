@@ -780,7 +780,7 @@ select{
     display: flex;
     flex-wrap: wrap;
     font-size: var(--font-md);
-    color: var(--bc-shader);
+    color: var(--charcoal-black);
     font-size: var(--font-xs);
     gap: 0 0.4rem;
     margin-top: -0.25rem;
@@ -4647,7 +4647,7 @@ body[ios] .page.chatroom .sendInput .flexBox{
     z-index: 1000;
     pointer-events: auto;
 }
-/* .page.profileBase::after{
+.page.profileBase::after{
     content: "";
     position: absolute;
     width: 100%;
@@ -4663,7 +4663,8 @@ body[ios] .page.chatroom .sendInput .flexBox{
     opacity: 0;
     /* pointer-events: none; */
     transition: var(--snap-transition);
-} */
+}
+
 .page.profileBase.load::after{
     opacity: -1;
     /* pointer-events: unset; */

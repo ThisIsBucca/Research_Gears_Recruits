@@ -102,14 +102,14 @@ a{
     align-items: center;
     justify-content: space-between;
     font-size: var(--font-md);
-    color: var(--bc-shader);
+    color: var(--charcoal-black);
     background-color: var(--bone-white);
     /* border-radius: var(--maximal-padding) var(--maximal-padding) 0 0; */
     overflow: hidden;
     box-shadow: 0 -5px 20px -4px var(--bc-low-shader);
     position: absolute;
     bottom: 0;
-    z-index: 10;
+    z-index: 1020;
     transition: var(--snap-transition);
 }
 body.white .section-content.appContent .main-navigation{
@@ -1536,4 +1536,12 @@ a {
 
 img, video {
     filter: brightness(0.9);
+}
+
+[data-theme="dark"] {
+    .main-navigation {
+        background-color: var(--surface-color);
+        color: var(--text-color);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 }
