@@ -113,14 +113,11 @@ a{
     transition: var(--snap-transition);
 }
 
-
-
  .section-content.appContent .main-navigation{
     padding-bottom: 1.8rem;
     /* bottom: 5px; */
      /* bottom: env(safe-area-inset-bottom,4rem); */
 }
-
 
 .section-content.appContent .main-navigation i{
     padding-block: var(--maximal-padding);
