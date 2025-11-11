@@ -126,6 +126,7 @@ body.white .section-content.appContent .main-navigation{
     height: 100%;
     font-size: var(--font-xxxs);
     font-style: normal;
+    padding-bottom: env(safe-area-inset-bottom,60px);
 }
 .section-content.appContent .main-navigation i::before{
     display: flex;
