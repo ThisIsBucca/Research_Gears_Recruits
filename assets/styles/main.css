@@ -112,21 +112,27 @@ a{
     z-index: 1020;
     transition: var(--snap-transition);
 }
-body.white .section-content.appContent .main-navigation{
-    bottom: var(--maximal-padding);
+
+
+
+ .section-content.appContent .main-navigation{
+    /* bottom: 4rem; */
+     bottom: env(safe-area-inset-bottom,4rem);
 }
+
+
 .section-content.appContent .main-navigation i{
     padding-block: var(--maximal-padding);
-    display: flex;
+    display: inline-flex !important;
     align-items: center;
-    justify-content: center;
+     justify-content: center;
     flex-direction: column;
     gap: 0.25rem;
     flex: 1;
     height: 100%;
     font-size: var(--font-xxxs);
     font-style: normal;
-    padding-bottom: env(safe-area-inset-bottom,60px);
+     visibility: visible !important;
 }
 .section-content.appContent .main-navigation i::before{
     display: flex;
